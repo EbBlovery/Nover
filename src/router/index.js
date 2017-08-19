@@ -10,8 +10,11 @@ export default new Router({
       path: '/',
       component: Hello,
       children: [{
-         path:'index',
+         path: 'index',
          component: require('../components/firstPage/index.vue')
+      },{
+      	 path: 'list',
+      	 component: require('../components/listPage/index.vue')
       }]
     }
   ]
