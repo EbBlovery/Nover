@@ -27,6 +27,9 @@ export default new Router({
       path:'/noverlist',
       component: require('../components/noverList/index.vue')
     },{
+      path: '/content/:id',
+      component: require('../views/content.vue')
+    },{
     	path: '*',
     	redirect: '/index'
     }

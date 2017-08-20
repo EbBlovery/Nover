@@ -3,12 +3,13 @@ import Vue from 'vue';
 
 Vue.use(Vuex);
 
-import { getInfo, getNoverList, getChapter } from '../config/api.js';
+import { getInfo, getNoverList, getChapter, getContent } from '../config/api.js';
 
 export default new Vuex.Store({
 	state: {
         infodata: [],
-        noverList: []
+        noverList: [],
+        contentData: []
 	},
 	getters:{
 		infodata: state=> state.infodata,
@@ -29,10 +30,14 @@ export default new Vuex.Store({
             	console.log(res)
             	return getChapter(res[1]._id)
             }).then(res=>{
-            	console.log(res.data.data.chapters)
                 state.noverList = res.data.data.chapters
             }).catch(err=>{
             	console.error(err.message)
+            })
+        },
+        GETCONTENT(state,item){
+            getContent(item.link).then(res=>{
+            	console.log(res);
             })
         }
 	},
