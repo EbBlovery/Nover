@@ -16,6 +16,13 @@ export default new Router({
       	 path: 'list',
       	 component: require('../components/listPage/index.vue')
       }]
+    },{
+    	path:'/search',
+    	name:'search',
+    	component: require('../components/search/search.vue')
+    },{
+    	path: '*',
+    	redirect: '/index'
     }
   ]
 })

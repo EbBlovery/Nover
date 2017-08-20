@@ -7,6 +7,12 @@
 		      </el-carousel-item>
 		    </el-carousel>
 		</div>
+		<div class="search">
+			<label>
+				<input id="searchVal" type="text" name="search" placeholder="总裁" />
+			</label>
+			<img @click="search()" src="../../assets/search.svg">
+		</div>
 	</div>
 </template>
 <script>
@@ -24,15 +30,24 @@
 					id:3
 				}]
 			}
+		},
+		methods:{
+			search(){
+                var val = document.querySelector('#searchVal').value.toString();
+                this.$router.push({
+                	name: 'search',
+                	params:{
+                		val
+                	}
+                })
+			}
 		}
 	}
 </script>
 <style lang="less" scoped>
- .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 150px;
+ .el-carousel__item img {
+    width:100%;
+    height:100%;
     margin: 0;
   }
 
@@ -42,5 +57,22 @@
   
   .el-carousel__item:nth-child(2n+1) {
      background-color: #d3dce6;
+  }
+  .search{
+  	display:flex;
+  	flex-wrap:nowrap;
+  	height:3rem;
+  	width:100%;
+  	label{
+  		input{
+	  		width:20rem;
+	  		height:2rem;
+	  		border:1px solid #999;
+	  	}
+  	}
+  	img{
+  		width:2rem;
+  		height:2rem;
+  	}
   }
 </style>

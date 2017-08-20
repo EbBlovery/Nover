@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div class="header">
+      <div class="header-btn logo"><img src="../assets/logo.png"></div>
+      <div class="header-btn boospra"><img @click="handleToBook()" src="../assets/boospra.png">我的书架</div>
+      <div class="header-btn user"><img @click="handleToUser()" src="../assets/user.png"></div>
+    </div>
     <div>
       <el-tabs class="nav-bar" v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="首页" name="index"></el-tab-pane>
@@ -39,6 +44,12 @@ export default {
       this.$router.push({
         path: name
       })
+    },
+    handleToUser(){
+      alert(123)
+    },
+    handleToBook(){
+      alert(345)
     }
   }
 }
@@ -49,8 +60,27 @@ export default {
 .nav-bar{
   background-color:#e4343c;
   height:2.6rem;
-  >.el-tabs__item{
-    color:#fff;
+}
+.header{
+  height:2.5rem;
+  display:flex;
+  flex-wrap:nowrap;
+  justify-content: space-between;
+  align-items:center;
+  color:#e43439;
+  .logo{
+    width:9rem;
+    img{
+      width:100%;
+      height:1.6rem;
+    }
+  }
+  .boospra{
+    width:6rem;
+    img{
+      width:2rem;
+      height:1.6rem;
+    }
   }
 }
 </style>
