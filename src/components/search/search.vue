@@ -23,7 +23,7 @@
 				    <p v-text="item.shortIntro"></p>
 				    <p><span>{{item.latelyFollower | parser}}人气</span> | <span>{{item.retentionRatio}}%留存</span></p>
 				</el-col>
-				<div class="linear"></div>
+				<p class="linear"></p>
 			</el-row>
 		</div>
 	</div>
@@ -51,6 +51,7 @@
                         id
             		}
             	})
+            	this.$store.commit('GETINFO',id)
             }
 		},
 		beforeRouteEnter(to,from,next){
@@ -97,7 +98,7 @@
 }
 .containers{
    .el-row{
-     margin:.7rem .1rem;
+     margin:1rem .1rem;
    }
    .images{
    	 img{
@@ -137,4 +138,13 @@
    	 }
    }
 }
+.linear{
+        height:1px;
+        background:#000;
+        -webkit-transform:scaleY(0.5);
+        -webkit-transform-origin:0 0;
+        transform:scaleY(0.5);
+        transform-origin:0 0;
+        overflow:hidden;
+    }
 </style>
