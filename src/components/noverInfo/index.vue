@@ -1,13 +1,12 @@
 <template>
 	<div>
      <div class="header">
-     	<mt-header title="书籍详情">
-		  <router-link to="/search" slot="left">
-		    <mt-button icon="back">返回</mt-button>
-		  </router-link>
-		  <mt-button icon="more" slot="right"></mt-button>
-		</mt-header>
-     </div>
+    	<el-row>
+    		<el-col @click.native="back()" class="el-icon-arrow-left" :span="4">back</el-col>
+    		<el-col :span="16">有关的书籍</el-col>
+    		<el-col :span="4" class="homePage">weqwe</el-col>
+    	</el-row>
+	 </div>
      <div class="content">
      	 <el-row :gutter='0'>
      	 	<el-col class="content-left" :span='6'>
@@ -28,7 +27,7 @@
      	 		<el-button size=large :plain="true" type="danger">加入书架</el-button>
      	 	</el-col>
      	 	<el-col :span='12'>
-     	 		<el-button size=large type="danger">开始阅读</el-button>
+     	 		<el-button @click="handleToStart(infodata._id)" size=large type="danger">开始阅读</el-button>
      	 	</el-col>
      	 </el-row>
      	 <p class="linear"></p>
@@ -86,6 +85,12 @@ export default {
         		}
         	})
         	this.$store.commit('GETLIST',val)
+        },
+        handleToStart(val){
+        	this.$router.push({
+        		path: '/content/1',
+        	})
+        	this.$store.dispatch('STARTNOVER',val)
         }
 	},
 	created(){
@@ -113,10 +118,15 @@ export default {
 
 <style lang="less" scoped>
 	.header{
-       .mint-header{
-       	  background: rgb(185,51,33);
-       }
-       
+		width:100%;
+		height: 3rem;
+		background:rgb(185,51,33);
+		.el-col{
+			height:inhert;
+			color:#fff;
+			line-height: 3rem;
+			font-size: 1.1rem;
+		}
 	}
 	.content{
 		margin:1rem 0;

@@ -30,7 +30,7 @@ export function getChapter(id){
     })
 }
 export function getContent(urls){
-     return axios.get(`${contentUrl}${urls}?k=2124b73d7e2e1945&t=1468223717`).then(res=>{
+     return axios.get(`/chapter/${urls}?k=2124b73d7e2e1945&t=1468223717`).then(res=>{
      	return res
      })
 }

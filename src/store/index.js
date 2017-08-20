@@ -13,7 +13,8 @@ export default new Vuex.Store({
 	},
 	getters:{
 		infodata: state=> state.infodata,
-		noverList: state=> state.noverList
+		noverList: state=> state.noverList,
+		contentData: state=> state.contentData
 	},
 	mutations: {
         GETINFO(state,id){
@@ -27,7 +28,6 @@ export default new Vuex.Store({
             getNoverList(val).then(res=>{
             	return res
             }).then(res=>{
-            	console.log(res)
             	return getChapter(res[1]._id)
             }).then(res=>{
                 state.noverList = res.data.data.chapters
@@ -37,12 +37,23 @@ export default new Vuex.Store({
         },
         GETCONTENT(state,item){
             getContent(item.link).then(res=>{
-            	console.log(res);
+            	state.contentData = res.data
             })
         }
 	},
 	actions: {
-
+        STARTNOVER({commit},val){
+            getNoverList(val).then(res=>{
+            	return res
+            }).then(res=>{
+            	return getChapter(res[1]._id)
+            }).then(res=>{
+            	var item = res.data.data.chapters[0];
+                commit('GETCONTENT',item)
+            }).catch(err=>{
+            	console.error(err.message)
+            })
+        }
 	}
 })
 

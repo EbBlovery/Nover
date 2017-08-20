@@ -1,13 +1,12 @@
 <template>
 	<div class="app">
-	    <div>
-		   <mt-header class="headers" fixed title='有关的书籍'>
-	    	<router-link to="/index" slot="left">
-			    <mt-button icon="back">back</mt-button>
-			 </router-link>
-			 <mt-button icon="more" slot="right"></mt-button>
-	       </mt-header>
-	    </div>
+	    <div class="header">
+	    	<el-row>
+	    		<el-col @click.native="back()" class="el-icon-arrow-left" :span="4">back</el-col>
+	    		<el-col :span="16">有关的书籍</el-col>
+	    		<el-col :span="4" class="homePage">weqwe</el-col>
+	    	</el-row>
+		</div>
 		<div class="content no-find" v-if="!books.length">
 			<img src="../../assets/continue.png">
 			<p>未找到你搜索的书籍</p>
@@ -52,6 +51,9 @@
             		}
             	})
             	this.$store.commit('GETINFO',id)
+            },
+            back(){
+            	this.$router.go(-1)
             }
 		},
 		beforeRouteEnter(to,from,next){
@@ -75,12 +77,20 @@
 	width:100%;
 	height:100%;
 }
-.headers{
+.header{
+	z-index:10000;
 	position:fixed;
-	top:0px;
-	left:0px;
+	top:0;
+	left:0;
+	width:100%;
+	height: 3rem;
 	background:rgb(185,51,33);
-	height:3rem;
+	.el-col{
+		height:inhert;
+		color:#fff;
+		line-height: 3rem;
+		font-size: 1.1rem;
+	}
 }
 .content{
 	margin-top:3.2rem;
