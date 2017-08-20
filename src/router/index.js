@@ -21,6 +21,9 @@ export default new Router({
     	name:'search',
     	component: require('../components/search/search.vue')
     },{
+      path:'/noverinfo',
+      component:require('../components/noverInfo/index.vue')
+    },{
     	path: '*',
     	redirect: '/index'
     }

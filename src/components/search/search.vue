@@ -13,7 +13,7 @@
 			<p>未找到你搜索的书籍</p>
 		</div>
 		<div class="content containers" v-else>
-			<el-row :gutter="10" v-for="item in books">
+			<el-row @click.native.prevent="onClickInfo(item)" :key="item._id" :gutter="10" v-for="item in books">
 				<el-col class="images" :span="6">
 					<img :src="item.cover">
 				</el-col>
@@ -39,26 +39,26 @@
 		methods: {
             get(){
                 search(this.$route.params.val).then(res=>{
-                	this.books=res.data.data.books
-                	console.log(this.books)
+                	this.books=res.data.books
+                	
                 })
+            },
+            onClickInfo(val){
+            	var id = val._id;
+            	this.$router.push({
+            		path: '/noverInfo',
+            		query:{
+                        id
+            		}
+            	})
             }
 		},
-		// created(){
-		// 	this.get(this.$route.params.val)
-		// }
 		beforeRouteEnter(to,from,next){
 			next(vm=>{
 				if(to.params.val){
 					vm.get();
 				}
-				
 			})
-		},
-		computed:{
-            val(){
-            	
-            }
 		},
 		filters:{
 			parser(val){
@@ -96,6 +96,9 @@
 	}
 }
 .containers{
+   .el-row{
+     margin:.7rem .1rem;
+   }
    .images{
    	 img{
    	 	width:4rem;
@@ -111,6 +114,7 @@
    	 p:nth-child(2){
    	 	font-size:9px;
    	 	text-align:left;
+   	 	margin:0.3rem 0;
    	 	span{
    	 		color:rgb(153,153,153);
    	 	}
@@ -125,6 +129,7 @@
    	 }
    	 p:nth-child(4){
    	 	text-align:left;
+   	 	margin-top:0.3rem;
    	 	span{
    	 		color:rgb(185,51,33);
    	 		font-size:9px;
