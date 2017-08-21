@@ -1,10 +1,11 @@
 <template>
   <div>
      <div class="header">
-     	<mt-header title="优质书源">
-		  <mt-button @click="back()" slot="left" icon="back">返回</mt-button>
-		  <mt-button icon="more" slot="right"></mt-button>
-        </mt-header>
+            <el-row>
+                <el-col @click.native="back()" class="el-icon-arrow-left" :span="4">back</el-col>
+                <el-col :span="16">章节</el-col>
+                <el-col :span="4" class="homePage">weqwe</el-col>
+            </el-row>
      </div>
      <div v-if="!noverList.length">
      	loading............
@@ -50,25 +51,45 @@ export default {
 </script>
 
 <style lang="less" scoped>
-	.header{
-        .mint-header{
-	        background:rgb(185,51,33);
-	        height: 3rem;
-	        font-size:1.2rem;
+.header{
+    z-index:10000;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 3rem;
+    background:rgb(185,51,33);
+    .el-col{
+        height:inhert;
+        color:#fff;
+        line-height: 3rem;
+        font-size: 1.1rem;
+    }
+}
+.content{
+    margin-top:3.2rem;
+	width:100%;
+	height:100%;
+	background:rgb(255,255,255);
+	padding: 0 1.5rem;
+	ul li{
+        text-align:left;
+        margin: 1rem 0;
+        p{
+        	font-size: .8rem;
+            color: rgb(153,153,153);
         }
 	}
-	.content{
-		width:100%;
-		height:100%;
-		background:rgb(255,255,255);
-		padding: 0 1.5rem;
-		ul li{
-            text-align:left;
-            margin: 1rem 0;
-            p{
-            	font-size: .8rem;
-                color: rgb(153,153,153);
-            }
-		}
-	}
+}
+
+
+
+
+
+
+
+
+
+
+
 </style>

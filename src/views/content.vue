@@ -44,6 +44,9 @@ export default {
 	.header{
 		width:100%;
 		height: 3rem;
+		position:fixed;
+		top:0;
+		left:0;
 		background:rgb(185,51,33);
 		.el-col{
 			height:inhert;
@@ -55,6 +58,8 @@ export default {
 	.content{
 		width:100%;
 		height:100%;
+		margin-top:3rem;
+		min-height: 50rem;
 		background: rgb(238,230,211);
 		p{
 			padding: 1rem 1rem;

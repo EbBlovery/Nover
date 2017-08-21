@@ -1,6 +1,6 @@
 <template>
 	<div class="app">
-	    <div class="header">
+	  <div class="header">
 	    	<el-row>
 	    		<el-col @click.native="back()" class="el-icon-arrow-left" :span="4">back</el-col>
 	    		<el-col :span="16">有关的书籍</el-col>
