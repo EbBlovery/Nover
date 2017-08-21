@@ -13,38 +13,35 @@
 			</label>
 			<img @click="search()" src="../../assets/search.svg">
 		</div>
-		<div class="mail-lover">
-			<p class="mail-lover-id"><span></span>女生最爱</p>
-			<el-row @click.native="handleToInfo(item)" class="mail-row" :gutter="30" :key="item._id" v-for="item in list">
-				<el-col :span="6">
-					<img :src="item.cover">
-				</el-col>
-				<el-col class="mail-row-col" :span="18">
-					<p>{{item.title}}</p>
-					<p>{{item.shortIntro}}</p>
-					<p><span>{{item.minorCate}}</span> | <span>{{item.latelyFollower | fontFilter}}</span>人气</p>
-				</el-col>
-			</el-row>
+		<div>
+			<female-love></female-love>
 		</div>
 		<p class="linear"></p>
-		<div class="mail-lover female">
-			<p class="mail-lover-id"><span></span>男生热门</p>
-			<el-row @click.native="handleToInfo(item)" class="mail-row" :gutter="30" :key="item._id" v-for="item in maleList">
-				<el-col :span="6">
-					<img :src="item.cover">
-				</el-col>
-				<el-col class="mail-row-col" :span="18">
-					<p>{{item.title}}</p>
-					<p>{{item.shortIntro}}</p>
-					<p><span>{{item.minorCate}}</span> | <span>{{item.latelyFollower | fontFilter}}</span>人气</p>
-				</el-col>
-			</el-row>
+		<div>
+			<male-love></male-love>
+		</div>
+		<p class="linear"></p>
+		<div>
+			<press-nover></press-nover>
+		</div>
+		<p class="linear"></p>
+		<div>
+			<male-free-limit></male-free-limit>
+		</div>
+		<p class="linear"></p>
+		<div>
+			<female-free-limit></female-free-limit>
 		</div>
 	</div>
 </template>
 <script>
-    import axios from 'axios'
-	export default {
+    import axios from 'axios';
+    import FemaleLove from './childList/femaleLove.vue';
+    import MaleLove from './childList/maleLove.vue';
+    import PressNover from './childList/pressNover.vue';
+    import MaleFreeLimit from './childList/maleFreelimit.vue';
+    import FemaleFreeLimit from './childList/femaleFreelimit.vue';
+ 	export default {
 		data(){
 			return {
 	            images:[{
@@ -70,36 +67,14 @@
                 		val
                 	}
                 })
-			},
-			fetch(){
-                axios.get('http://novel.juhe.im/category-info?gender=female&type=over&major=现代言情&minor=&start=0&limit=3').then(res=>{
-                	    this.list = res.data.data.books
-                	    console.log(res.data.data.books)
-                }).catch(err=>{
-                	console.error(err)
-                })
-                axios.get('http://novel.juhe.im/category-info?gender=male&type=hot&major=玄幻&minor=&start=0&limit=4').then(res=>{
-                	    this.maleList = res.data.data.books
-                })
-			},
-			handleToInfo(val){
-				const id = val._id
-                this.$router.push({
-                	path: '/noverinfo',
-                	query:{
-                        id
-                	}
-                })
-                this.$store.commit('GETINFO',id)
 			}
 		},
-		created(){
-            this.fetch()
-		},
-		filters: {
-			fontFilter(v){
-                return v>=10000?(v/10000).toFixed(1)+ '万':v
-			}
+		components: {
+			FemaleLove,
+			MaleLove,
+			PressNover,
+			MaleFreeLimit,
+			FemaleFreeLimit
 		}
 	}
 </script>
@@ -137,22 +112,7 @@
   }
   .mail-lover{
   	 text-align:left;
-  	 .mail-lover-id{
-  	 	color:#000;
-  	 	font-size:1.1rem;
-  	 	font-weight:bold;
-  	 	text-indent: 1rem;
-  	 	position:relative;
-  	 	span{
-  	 		position:absolute;
-  	 		top:0.3rem;
-  	 		left:0rem;
-  	 		width:0.2rem;
-  	 		height:1rem;
-  	 		display:inline-block;
-  	 		background-color:rgb(185,51,33);
-  	 	}
-  	 }
+  	 
      .mail-row{
      	padding: 0 1rem;
      	img{
@@ -187,10 +147,22 @@
      	}
      }
   }
-  .female{
-  	margin-top:1rem;
-  }
-
+  .mail-lover-id{
+  	 	color:#000;
+  	 	font-size:1.1rem;
+  	 	font-weight:bold;
+  	 	text-indent: 1rem;
+  	 	position:relative;
+  	 	span{
+  	 		position:absolute;
+  	 		top:0.3rem;
+  	 		left:0rem;
+  	 		width:0.2rem;
+  	 		height:1rem;
+  	 		display:inline-block;
+  	 		background-color:rgb(185,51,33);
+  	 	}
+  	 }
 
 
 

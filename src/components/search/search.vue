@@ -96,13 +96,14 @@
 	margin-top:3.2rem;
 }
 .no-find {
+  min-height:30rem;
 	padding:5rem 0;
 	p{
 		color:rgb(178,178,178);
 		font-size:0.8rem;
 	}
 	img{
-        height:8rem;
+    height:8rem;
 		width:8rem;
 	}
 }
