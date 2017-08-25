@@ -31,6 +31,10 @@ module.exports = {
         '/chapter': {
             target: 'http://chapter2.zhuishushenqi.com',
             changeOrigin: true,
+        },
+        '/cats': {
+            target: 'http://api.zhuishushenqi.com',
+            changeOrigin: true,
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
