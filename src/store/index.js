@@ -54,6 +54,12 @@ export default new Vuex.Store({
             getRanking(id).then(res=>{
                 state.rankData = res.data.ranking
             })
+        },
+        RANKOWER(state,val){
+            getRanking(val._id).then(res=>{
+                state.rankData = res.data.ranking
+                console.log(res.data.ranking)
+            })
         }
 	},
 	actions: {

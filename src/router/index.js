@@ -30,7 +30,7 @@ export default new Router({
       path:'/noverlist',
       component: require('../components/noverList/index.vue')
     },{
-      path: '/content/:id',
+      path: '/content/:id',   //小说内容模块路由，有一点点卫开发完成
       component: require('../views/content.vue')
     },{
       path: '/classify',
@@ -42,6 +42,13 @@ export default new Router({
     },{
     	path: '*',
     	redirect: '/index'
+    },{
+       path: '/rankower/',
+       component: require('../views/rankOwer/index.vue'),
+       children: [{
+          path: 'week',
+          component: require('../views/rankOwer/rankOwerList/week.vue')
+       }]
     }
   ]
 })

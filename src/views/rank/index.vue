@@ -62,7 +62,10 @@ export default {
 			this.show2 = !this.show2
 		},
 		handleToOwer(item){
-			console.log(item)
+			this.$router.push({
+				path: '/rankower/'
+			})
+            this.$store.commit('RANKOWER',item)
 		},
 		handleToOther(item){
 			const id = item._id
