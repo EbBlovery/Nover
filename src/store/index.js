@@ -3,20 +3,22 @@ import Vue from 'vue';
 
 Vue.use(Vuex);
 
-import { getInfo, getNoverList, getChapter, getContent,getClassify } from '../config/api.js';
+import { getInfo, getNoverList, getChapter, getContent,getClassify,getRanking } from '../config/api.js';
 
 export default new Vuex.Store({
 	state: {
         infodata: [],
         noverList: [],
         contentData: [],
-        classifyData: []
+        classifyData: [],
+        rankData: []
 	},
 	getters:{
 		infodata: state=> state.infodata,
 		noverList: state=> state.noverList,
 		contentData: state=> state.contentData,
-        classifyData: state=> state.classifyData
+        classifyData: state=> state.classifyData,
+        rankData: state=> state.rankData
 	},
 	mutations: {
         GETINFO(state,id){
@@ -46,6 +48,11 @@ export default new Vuex.Store({
             getClassify(item.gender,item.type,item.name).then(res=>{
                 state.classifyData = res.data
                 state.classifyData.name = item.name
+            })
+        },
+        TORANKING(state,id){
+            getRanking(id).then(res=>{
+                state.rankData = res.data.ranking
             })
         }
 	},

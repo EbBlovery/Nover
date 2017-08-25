@@ -2,30 +2,30 @@
 	<div>
 		<template class="boys">
 		    <p class="header">男生</p>
-		    <el-row class="rank-list" :key="index" v-if="!item.collapse" v-for="(item,index) in list.male">
+		    <el-row @click.native="handleToOwer(item)" class="rank-list" :key="index" v-if="!item.collapse" v-for="(item,index) in list.male">
 		    	<el-col :span="4"><img :src="'http://statics.zhuishushenqi.com' + item.cover"></el-col>
 		    	<el-col :span="20"><p>{{item.title}}</p></el-col>
 		    </el-row>
 		    <el-row class="rank-list" @click.native="handleToggle()">
-		    	<el-col :span="4">阿萨德</el-col>
+		    	<el-col :span="4"><img src="http://statics.zhuishushenqi.com/ranking-cover/144738093413066"></el-col>
 		    	<el-col :span="20"><p>别人家的排行榜</p></el-col>
 		    </el-row>
-		    <el-row class="rank-list" :class="{isshow:show1}" :key="index" v-if="item.collapse" v-for="(item,index) in list.male">
+		    <el-row @click.native="handleToOther(item)" class="rank-list" :class="{isshow:show1}" :key="index" v-if="item.collapse" v-for="(item,index) in list.male">
 		    	<el-col :span="4"><img style="opacity:0" src="#"></el-col>
 		    	<el-col :span="20"><p>{{item.title}}</p></el-col>
 		    </el-row>
 		</template>
 		<template class="boys">
 		    <p class="header">女生</p>
-		    <el-row class="rank-list" :key="index" v-if="!item.collapse" v-for="(item,index) in list.female">
+		    <el-row @click="handleToOwer(item)" class="rank-list" :key="index" v-if="!item.collapse" v-for="(item,index) in list.female">
 		    	<el-col :span="4"><img :src="'http://statics.zhuishushenqi.com' + item.cover"></el-col>
 		    	<el-col :span="20"><p>{{item.title}}</p></el-col>
 		    </el-row>
 		    <el-row class="rank-list" @click.native="handleToggle2()">
-		    	<el-col :span="4">阿萨德</el-col>
+		    	<el-col :span="4"><img src="http://statics.zhuishushenqi.com/ranking-cover/144738093413066"></el-col>
 		    	<el-col :span="20"><p>别人家的排行榜</p></el-col>
 		    </el-row>
-		    <el-row class="rank-list" :class="{isshow:show2}" :key="index" v-if="item.collapse" v-for="(item,index) in list.female">
+		    <el-row @click.native="handleToOther(item)" class="rank-list" :class="{isshow:show2}" :key="index" v-if="item.collapse" v-for="(item,index) in list.female">
 		    	<el-col :span="4"><img style="opacity:0" src="#"></el-col>
 		    	<el-col :span="20"><p>{{item.title}}</p></el-col>
 		    </el-row>
@@ -60,6 +60,19 @@ export default {
 		},
 		handleToggle2(){
 			this.show2 = !this.show2
+		},
+		handleToOwer(item){
+			console.log(item)
+		},
+		handleToOther(item){
+			const id = item._id
+			this.$router.push({
+				path: '/rankinfo',
+                query: {
+                	id
+                }
+			})
+			this.$store.commit('TORANKING',id)
 		}
 	},
 	computed: {

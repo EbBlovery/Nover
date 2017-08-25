@@ -42,3 +42,9 @@ export function getClassify(gender='',type='hot',major='',minor=''){
         return res
     })
 }
+
+export function getRanking(id){
+    return axios.get(`/ranking/${id}`).then(res=>{
+        return res
+    })
+}

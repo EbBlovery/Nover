@@ -37,6 +37,9 @@ export default new Router({
       name: 'classify',
       component: require('../views/classify/index.vue')
     },{
+       path:'/rankinfo',    //排行榜其他榜跳转路由
+       component: require('../views/rankList/index.vue')
+    },{
     	path: '*',
     	redirect: '/index'
     }
