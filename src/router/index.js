@@ -30,6 +30,10 @@ export default new Router({
       path: '/content/:id',
       component: require('../views/content.vue')
     },{
+      path: '/classify',
+      name: 'classify',
+      component: require('../views/classify/index.vue')
+    },{
     	path: '*',
     	redirect: '/index'
     }

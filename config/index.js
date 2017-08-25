@@ -35,6 +35,10 @@ module.exports = {
         '/cats': {
             target: 'http://api.zhuishushenqi.com',
             changeOrigin: true,
+        },
+        '/book': {
+            target: 'http://api.zhuishushenqi.com',
+            changeOrigin: true,
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

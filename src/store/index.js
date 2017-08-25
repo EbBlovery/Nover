@@ -3,18 +3,20 @@ import Vue from 'vue';
 
 Vue.use(Vuex);
 
-import { getInfo, getNoverList, getChapter, getContent } from '../config/api.js';
+import { getInfo, getNoverList, getChapter, getContent,getClassify } from '../config/api.js';
 
 export default new Vuex.Store({
 	state: {
         infodata: [],
         noverList: [],
-        contentData: []
+        contentData: [],
+        classifyData: []
 	},
 	getters:{
 		infodata: state=> state.infodata,
 		noverList: state=> state.noverList,
-		contentData: state=> state.contentData
+		contentData: state=> state.contentData,
+        classifyData: state=> state.classifyData
 	},
 	mutations: {
         GETINFO(state,id){
@@ -38,6 +40,12 @@ export default new Vuex.Store({
         GETCONTENT(state,item){
             getContent(item.link).then(res=>{
             	state.contentData = res.data
+            })
+        },
+        CLASSIFY(state,item){
+            getClassify(item.gender,item.type,item.name).then(res=>{
+                state.classifyData = res.data
+                state.classifyData.name = item.name
             })
         }
 	},
