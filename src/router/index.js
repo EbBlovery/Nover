@@ -15,6 +15,9 @@ export default new Router({
       },{
       	 path: 'list',
       	 component: require('../components/listPage/index.vue')
+      },{
+         path: 'ranklist',
+         component: require('../views/rank/index.vue')
       }]
     },{
     	path:'/search',

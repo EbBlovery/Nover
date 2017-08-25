@@ -9,7 +9,7 @@
       <el-tabs class="nav-bar" v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="首页" name="index"></el-tab-pane>
         <el-tab-pane label="分类" name="list"></el-tab-pane>
-        <el-tab-pane label="排行" name="third"></el-tab-pane>
+        <el-tab-pane label="排行" name="ranklist"></el-tab-pane>
         <el-tab-pane label="书单" name="fourth"></el-tab-pane>
         <el-tab-pane label="VIP专区" name="fifth"></el-tab-pane>
       </el-tabs>

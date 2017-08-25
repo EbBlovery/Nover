@@ -17,8 +17,8 @@
 					<img :src="item.cover">
 				</el-col>
 				<el-col class="inform" :span="18">
-                    <p v-text="item.title"></p>
-                    <p><span v-text="item.author"></span>|<span v-text="item.cat"></span></p>
+            <p v-text="item.title"></p>
+            <p><span v-text="item.author"></span>|<span v-text="item.cat"></span></p>
 				    <p v-text="item.shortIntro"></p>
 				    <p><span>{{item.latelyFollower | parser}}人气</span> | <span>{{item.retentionRatio}}%留存</span></p>
 				</el-col>
