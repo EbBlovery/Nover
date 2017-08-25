@@ -11,6 +11,7 @@
 			<p><span>{{item.minorCate}}</span> | <span>{{item.latelyFollower | fontFilter}}</span>人气</p>
 		</el-col>
 	</el-row>
+	<p class="more">查看更多></p>
   </div>	
 </template>
 
@@ -106,5 +107,11 @@ export default {
 		display:inline-block;
 		background-color:rgb(185,51,33);
 	}
+}
+.more{
+	color:red;
+	text-align:center;
+	font-size:.8rem;
+	margin:1rem 0;
 }
 </style>

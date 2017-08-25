@@ -1,16 +1,13 @@
 <template>
   <div class="mail-lover">
-	<p class="mail-lover-id"><span></span>女生最爱</p>
-	<el-row @click.native="handleToInfo(item)" class="mail-row" :gutter="30" :key="item._id" v-for="item in list">
-		<el-col :span="6">
+	<p class="mail-lover-id"><span></span>女生限免</p>
+	<el-row class="mail-list">
+		<el-col @click.native="handleToInfo(item)" class="mail-row" :key="item._id" v-for="item in list" :span="6">
 			<img :src="item.cover">
-		</el-col>
-		<el-col class="mail-row-col" :span="18">
-			<p>{{item.title}}</p>
-			<p>{{item.shortIntro}}</p>
-			<p><span>{{item.minorCate}}</span> | <span>{{item.latelyFollower | fontFilter}}</span>人气</p>
+			<p>{{item.title|filterSize}}</p>
 		</el-col>
 	</el-row>
+    <p class="more">查看更多></p>
   </div>	
 </template>
 
@@ -28,7 +25,7 @@ export default {
 	},
 	methods: {
 		get(){
-		axios.get('http://novel.juhe.im/category-info?gender=female&type=over&major=现代言情&minor=&start=0&limit=3').then(res=>{
+		axios.get('http://novel.juhe.im/category-info?gender=female&type=monthly&major=现代言情&minor=&start=0&limit=4').then(res=>{
             	    this.list = res.data.data.books
             }).catch(err=>{
             	console.error(err)
@@ -48,50 +45,39 @@ export default {
 	filters: {
 		fontFilter(v){
             return v>=10000?(v/10000).toFixed(1)+ '万':v
+		},
+		filterSize(v){
+            if(v.length>=4){
+                return v.slice(0,4)
+            }else{
+            	return v
+            }
 		}
 	}
 }
 </script>
-
 <style lang="less" scoped>
-.mail-lover{
-	text-align:left;
-	
-	.mail-row{
-		padding: 0 1rem;
-		img{
-			width:5rem;
-			height:7rem;
-		}
-		&-col{
-			p{
-				margin:.3rem 0;
-			}
-			padding:1rem 0;
-			p:nth-child(1){
-				color:#000;
-				font-size:.9rem;
-			}
-			p:nth-child(2){
-				color:#5c5d58;
-				font-size:.85rem;
-	        overflow:hidden;
-	        height:2.8rem;
-	        text-overflow:ellipsis;
-	        line-height:1.4rem;
-	        hite-space:nowrap;
-			}
-			p:nth-child(3){
-	        font-size:.9rem;
-	        color: #5c5d58;
-	        span:nth-child(2){
-	        	color:rgb(185,51,33);
-	        }
-			}
-		}
-	}
+.mail-list{
+	padding-left: .9rem;
+    .mail-row{
+
+    	img{
+    		width:5rem;
+    		height:7rem;
+    	}
+    	p{
+    		text-indent:.5rem;
+    		overflow:hodden;
+    		text-overflow:ellipsis;
+    		white-space:nowrap;
+    	}
+    }
 }
+
+
 .mail-lover-id{
+	margin-bottom:1rem;
+	margin-top:1rem;
 	color:#000;
 	font-size:1.1rem;
 	font-weight:bold;
@@ -106,5 +92,11 @@ export default {
 		display:inline-block;
 		background-color:rgb(185,51,33);
 	}
+}
+.more{
+	color:red;
+	text-align:center;
+	font-size:.8rem;
+	margin:1rem 0;
 }
 </style>
