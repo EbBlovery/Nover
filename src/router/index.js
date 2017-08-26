@@ -48,6 +48,12 @@ export default new Router({
        children: [{
           path: 'week',
           component: require('../views/rankOwer/rankOwerList/week.vue')
+       },{
+          path: 'all',
+          component: require('../views/rankOwer/rankOwerList/all.vue')
+       },{
+          path: 'month',
+          component: require('../views/rankOwer/rankOwerList/month.vue')
        }]
     }
   ]

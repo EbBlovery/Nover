@@ -11,14 +11,16 @@ export default new Vuex.Store({
         noverList: [],
         contentData: [],
         classifyData: [],
-        rankData: []
+        rankData: [],
+        rankDatas: []
 	},
 	getters:{
 		infodata: state=> state.infodata,
 		noverList: state=> state.noverList,
 		contentData: state=> state.contentData,
         classifyData: state=> state.classifyData,
-        rankData: state=> state.rankData
+        rankData: state=> state.rankData,
+        rankDatas: state=> state.rankDatas
 	},
 	mutations: {
         GETINFO(state,id){
@@ -57,7 +59,7 @@ export default new Vuex.Store({
         },
         RANKOWER(state,val){
             getRanking(val._id).then(res=>{
-                state.rankData = res.data.ranking
+                state.rankDatas = res.data.ranking
                 console.log(res.data.ranking)
             })
         }

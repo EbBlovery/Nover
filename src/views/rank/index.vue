@@ -17,7 +17,7 @@
 		</template>
 		<template class="boys">
 		    <p class="header">女生</p>
-		    <el-row @click="handleToOwer(item)" class="rank-list" :key="index" v-if="!item.collapse" v-for="(item,index) in list.female">
+		    <el-row @click.native="handleToOwer(item)" class="rank-list" :key="index" v-if="!item.collapse" v-for="(item,index) in list.female">
 		    	<el-col :span="4"><img :src="'http://statics.zhuishushenqi.com' + item.cover"></el-col>
 		    	<el-col :span="20"><p>{{item.title}}</p></el-col>
 		    </el-row>
@@ -62,6 +62,7 @@ export default {
 			this.show2 = !this.show2
 		},
 		handleToOwer(item){
+			console.log(item)
 			this.$router.push({
 				path: '/rankower/'
 			})
