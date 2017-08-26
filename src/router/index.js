@@ -47,14 +47,20 @@ export default new Router({
        component: require('../views/rankOwer/index.vue'),
        children: [{
           path: 'week',
+          name: 'week',
           component: require('../views/rankOwer/rankOwerList/week.vue')
        },{
           path: 'all',
+          name: 'all',
           component: require('../views/rankOwer/rankOwerList/all.vue')
        },{
           path: 'month',
+          name: 'month',
           component: require('../views/rankOwer/rankOwerList/month.vue')
        }]
+    },{
+      path: '/rankower/*',
+      redirect: '/rankower/week'
     }
   ]
 })

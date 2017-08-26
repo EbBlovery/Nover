@@ -9,9 +9,9 @@
 		</div>
 		<div>
 			<el-row class="header-bar">
-				<el-col @click.native="toWeek()" :span="8"><p>周榜</p></el-col>
-				<el-col @click.native="toMonth()" :span="8"><p>月榜</p></el-col>
-				<el-col @click.native="toAll()" :span="8"><p>总榜</p></el-col>
+				<el-col @click.native="toWeek(rankDatas._id)" :span="8"><p>周榜</p></el-col>
+				<el-col @click.native="toMonth(rankDatas.monthRank)" :span="8"><p>月榜</p></el-col>
+				<el-col @click.native="toAll(rankDatas.totalRank)" :span="8"><p>总榜</p></el-col>
 			</el-row>
 		</div>
 		<div>
@@ -33,19 +33,28 @@ export default {
         back(){
         	this.$router.go(-1)
         },
-        toWeek(){
+        toWeek(id){
              this.$router.push({
-             	path: 'week'
+             	name: 'week',
+             	params: {
+             		id
+             	}
              })
         },
-        toMonth(){
+        toMonth(id){
             this.$router.push({
-             	path: 'month'
+             	name: 'month',
+             	params: {
+             		id
+             	}
             })
         },
-        toAll(){
+        toAll(id){
             this.$router.push({
-             	path: 'all'
+             	name: 'all',
+             	params: {
+             		'id':id
+             	}
             })
         }
 	},
