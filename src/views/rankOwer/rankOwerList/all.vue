@@ -36,7 +36,17 @@ export default {
             getRanking(this.$route.params.id).then(res=>{
             	this.list = res.data.ranking
             })
-		}
+		},
+		onClickInfo(val){
+        	var id = val._id;
+        	this.$router.push({
+        		path: '/noverInfo',
+        		query:{
+                    id
+        		}
+        	})
+        	this.$store.commit('GETINFO',id)
+        }
 	},
 	filters:{
 		parser(val){

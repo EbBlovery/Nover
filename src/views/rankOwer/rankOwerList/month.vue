@@ -38,7 +38,17 @@ export default {
             	this.list = res.data.ranking
             	console.log(res.data)
             })
-		}
+		},
+		onClickInfo(val){
+        	var id = val._id;
+        	this.$router.push({
+        		path: '/noverInfo',
+        		query:{
+                    id
+        		}
+        	})
+        	this.$store.commit('GETINFO',id)
+        }
 	},
 	filters:{
 		parser(val){
