@@ -7,6 +7,9 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/login',
+      component: require('../views/login/login.vue')
+    },{
       path: '/',
       component: Hello,
       children: [{
@@ -40,9 +43,6 @@ export default new Router({
        path:'/rankinfo',    //排行榜其他榜跳转路由
        component: require('../views/rankList/index.vue')
     },{
-    	path: '*',
-    	redirect: '/index'
-    },{
        path: '/rankower/',
        component: require('../views/rankOwer/index.vue'),
        children: [{
@@ -61,6 +61,9 @@ export default new Router({
     },{
       path: '/rankower/*',
       redirect: '/rankower/week'
+    },{
+      path: '*',
+      redirect: '/index'
     }
   ]
 })

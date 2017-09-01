@@ -48,7 +48,9 @@ export default {
       })
     },
     handleToUser(){
-      alert(123)
+      this.$router.push({
+        path: '/login'
+      })
     },
     handleToBook(){
       alert(345)
