@@ -1,20 +1,22 @@
 <template>
 	<div>
-		<div class="header">
-	    	<el-row>
-	    		<el-col @click.native="back()" class="el-icon-arrow-left" :span="4">back</el-col>
-	    		<el-col :span="16">{{rankDatas.title}}</el-col>
-	    		<el-col :span="4" class="homePage">weqwe</el-col>
-	    	</el-row>
-		</div>
-		<div>
-			<el-row class="header-bar">
-				<el-col @click.native="toWeek(rankDatas._id)" :span="8"><p>周榜</p></el-col>
-				<el-col @click.native="toMonth(rankDatas.monthRank)" :span="8"><p>月榜</p></el-col>
-				<el-col @click.native="toAll(rankDatas.totalRank)" :span="8"><p>总榜</p></el-col>
-			</el-row>
-		</div>
-		<div>
+    <div class="header-fixed">
+      <div class="header">
+        <el-row>
+          <el-col @click.native="back()" class="el-icon-arrow-left" :span="4">back</el-col>
+          <el-col :span="16">{{rankDatas.title}}</el-col>
+          <el-col :span="4" class="homePage">weqwe</el-col>
+        </el-row>
+      </div>
+      <div>
+        <el-row class="header-bar">
+          <el-col @click.native="toWeek(rankDatas._id)" :span="8"><p>周榜</p></el-col>
+          <el-col @click.native="toMonth(rankDatas.monthRank)" :span="8"><p>月榜</p></el-col>
+          <el-col @click.native="toAll(rankDatas.totalRank)" :span="8"><p>总榜</p></el-col>
+        </el-row>
+      </div>
+    </div>
+		<div class="show-detail">
 		  <keep-alive>
 		  	<router-view></router-view>
 		  </keep-alive>
@@ -66,6 +68,14 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.header-fixed{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:3rem;
+  z-index: 100;
+}
 .header{
 	width:100%;
 	height: 3rem;
@@ -78,6 +88,7 @@ export default {
 	}
 }
 .header-bar{
+  background: #fff;
 	width:100%;
 	height:4rem;
 	line-height:4rem;
@@ -86,4 +97,7 @@ export default {
         font-size: .9rem;
 	}
 }
+  .show-detail{
+    margin-top:7rem;
+  }
 </style>

@@ -79,15 +79,6 @@ export default {
           'classifyData'
 		])
 	},
-	created(){
-         if(this.$route.params.gender==='press'){
-         	alert(123)
-             this.show=false
-         }else{
-         	alert(345)
-         	this.show=true
-         }
-	},
 	filters:{
 		parser(val){
 			return val>=10000?(val/10000).toFixed(1) + '万':val 
